@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package>
+  <name>myrobot_description</name>
+  <version>1.0.0</version>
+  <description>The MyRobot description package</description>
+
+  <maintainer email="tkt.sakaguchi@gmail.com">Takuto Sakaguchi</maintainer>
+  <!-- <maintainer email="shop@rt-net.jp">RT Corporation</maintainer> -->
+  <!-- <author email="nomura@rt-net.jp">Hiroyuki Nomura</author> -->
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>joint_state_publisher_gui</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>rviz</run_depend>
+  <run_depend>xacro</run_depend>
+
+</package>

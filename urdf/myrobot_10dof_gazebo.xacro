@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:macro name="default_transmission" params="joint_name interface:=position">
+    <transmission name="${joint_name}_trans">
+        <provideFeedback>true</provideFeedback>
+        <implicitSpringDamper>0</implicitSpringDamper>
+        <motorTorqueConstant>0.418</motorTorqueConstant>
+        <type>transmission_interface/SimpleTransmission</type>
+        
+        <joint name="${joint_name}">
+            <xacro:if value="${interface == 'position'}">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            </xacro:if>
+            <xacro:if value="${interface == 'velocity'}">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            </xacro:if>
+            <xacro:if value="${interface == 'effort'}">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </xacro:if>
+        </joint>
+
+        <actuator name="${joint_name}_motor">
+            <xacro:if value="${interface == 'position'}">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            </xacro:if>
+            <xacro:if value="${interface == 'velocity'}">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            </xacro:if>
+            <xacro:if value="${interface == 'effort'}">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </xacro:if>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+</xacro:macro>
+
+<gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/my_robot</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+        <legacyModeNS>false</legacyModeNS>
+    </plugin>
+</gazebo>
+
+</robot>

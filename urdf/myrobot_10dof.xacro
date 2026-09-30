@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="myrobot_10dof" 
+    params="arm_joint1_lower_limit
+            arm_joint1_upper_limit
+            arm_joint2_lower_limit
+            arm_joint2_upper_limit
+            arm_joint3_lower_limit
+            arm_joint3_upper_limit
+            arm_joint4_lower_limit
+            arm_joint4_upper_limit
+            arm_joint5_lower_limit
+            arm_joint5_upper_limit
+            arm_joint6_lower_limit
+            arm_joint6_upper_limit
+            arm_joint7_lower_limit
+            arm_joint7_upper_limit
+            arm_joint8_lower_limit
+            arm_joint8_upper_limit
+            arm_joint9_lower_limit
+            arm_joint9_upper_limit
+            arm_joint10_lower_limit
+            arm_joint10_upper_limit
+            arm_joints_effort_limit
+            arm_joints_velocity_limit
+            arm_color
+            ">
+
+    <!-- ================= Link 1 ================= -->
+    <joint name="arm_joint01" type="fixed">
+      <parent link="base_link" />
+      <child link="link1" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="link1">
+      <visual>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/visual/com1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="${arm_color}"/>
+      </visual>
+      <collision>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/collision/com1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/>
+        <mass value="0.25"/>
+      </inertial>
+    </link>
+
+    <!-- ================= Link 2 ================= -->
+    <joint name="arm_joint02" type="revolute">
+      <parent link="link1" />
+      <child link="link2" />
+      <origin xyz="0 0 -0.0715" rpy="0 0 0"/>
+      <limit lower="${arm_joint2_lower_limit}" upper="${arm_joint2_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <axis xyz="0 0 1"/>
+      <dynamics damping="1.0e-6" friction="0.8"/>
+    </joint>
+
+    <link name="link2">
+      <visual>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/visual/com2.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="${arm_color}"/>
+      </visual>
+      <collision>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/collision/com2.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/>
+        <mass value="0.2"/>
+      </inertial>
+    </link>
+
+    <!-- ================= Link 3 ================= -->
+    <joint name="arm_joint03" type="revolute">
+      <parent link="link2" />
+      <child link="link3" />
+      <origin xyz="0 0 -0.08" rpy="0 0 0"/>
+      <limit lower="${arm_joint3_lower_limit}" upper="${arm_joint3_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <axis xyz="0 1 0"/>
+      <dynamics damping="1.0e-6" friction="0.8"/>
+    </joint>
+
+    <link name="link3">
+      <visual>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/visual/com3.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="${arm_color}"/>
+      </visual>
+      <collision>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/collision/com3.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/>
+        <mass value="0.2"/>
+      </inertial>
+    </link>
+
+    <!-- ================= Link 4 ================= -->
+    <joint name="arm_joint04" type="revolute">
+      <parent link="link3" />
+      <child link="link4" />
+      <origin xyz="0 0 -0.2265" rpy="0 0 0"/>
+      <limit lower="${arm_joint4_lower_limit}" upper="${arm_joint4_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <axis xyz="0 0 1"/>
+      <dynamics damping="1.0e-6" friction="0.8"/>
+    </joint>
+
+    <link name="link4">
+      <visual>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/visual/com4.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="${arm_color}"/>
+      </visual>
+      <collision>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/collision/com4.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/>
+        <mass value="0.2"/>
+      </inertial>
+    </link>
+
+    <!-- ================= Link 5 ================= -->
+    <joint name="arm_joint05" type="revolute">
+      <parent link="link4" />
+      <child link="link5" />
+      <origin xyz="0 0 -0.150" rpy="0 0 0"/>
+      <limit lower="${arm_joint5_lower_limit}" upper="${arm_joint5_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <axis xyz="0 1 0"/>
+      <dynamics damping="1.0e-6" friction="0.8"/>
+    </joint>
+
+    <link name="link5">
+      <visual>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/visual/com5.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="${arm_color}"/>
+      </visual>
+      <collision>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/collision/com5.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/>
+        <mass value="0.2"/>
+      </inertial>
+    </link>
+
+    <!-- ================= Link 6 ================= -->
+    <joint name="arm_joint06" type="revolute">
+      <parent link="link5" />
+      <child link="link6" />
+      <origin xyz="0 0 -0.2005" rpy="0 0 0"/>
+      <limit lower="${arm_joint6_lower_limit}" upper="${arm_joint6_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <axis xyz="0 0 1"/>
+      <dynamics damping="1.0e-6" friction="0.8"/>
+    </joint>
+
+    <link name="link6">
+      <visual>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/visual/com6.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="${arm_color}"/>
+      </visual>
+      <collision>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/collision/com6.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/>
+        <mass value="0.15"/>
+      </inertial>
+    </link>
+
+    <!-- ================= Link 7 ================= -->
+    <joint name="arm_joint07" type="revolute">
+      <parent link="link6" />
+      <child link="link7" />
+      <origin xyz="0 0 -0.09025" rpy="0 0 0"/>
+      <limit lower="${arm_joint7_lower_limit}" upper="${arm_joint7_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <axis xyz="0 1 0"/>
+      <dynamics damping="1.0e-6" friction="0.8"/>
+    </joint>
+
+    <link name="link7">
+      <visual>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/visual/com7.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="${arm_color}"/>
+      </visual>
+      <collision>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/collision/com7.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/>
+        <mass value="0.1"/>
+      </inertial>
+    </link>
+
+    <!-- ================= Link 8 ================= -->
+    <joint name="arm_joint08" type="revolute">
+      <parent link="link7" />
+      <child link="link8" />
+      <origin xyz="0 0 -0.1355" rpy="0 0 0"/>
+      <limit lower="${arm_joint8_lower_limit}" upper="${arm_joint8_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <axis xyz="0 0 1"/>
+      <dynamics damping="1.0e-6" friction="0.8"/>
+    </joint>
+
+    <link name="link8">
+      <visual>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/visual/com8.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="${arm_color}"/>
+      </visual>
+      <collision>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/collision/com8.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/>
+        <mass value="0.1"/>
+      </inertial>
+    </link>
+
+    <!-- ================= Link 9 ================= -->
+    <joint name="arm_joint09" type="revolute">
+      <parent link="link8" />
+      <child link="link9" />
+      <origin xyz="0 0 -0.09025" rpy="0 0 0"/>
+      <limit lower="${arm_joint9_lower_limit}" upper="${arm_joint9_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <axis xyz="0 1 0"/>
+      <dynamics damping="1.0e-6" friction="0.8"/>
+    </joint>
+
+    <link name="link9">
+      <visual>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/visual/com9.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="${arm_color}"/>
+      </visual>
+      <collision>
+        <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://myrobot_10dof_description/meshes/collision/com9.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/>
+        <mass value="0.1"/>
+      </inertial>
+    </link>
+
+    <!-- ================= Link 10 ================= -->
+    <joint name="arm_joint10" type="revolute">
+      <parent link="link9" />
+      <child link="link10" />
+      <origin xyz="0 0 -0.14050" rpy="0 0 0"/>
+      <limit lower="${arm_joint10_lower_limit}" upper="${arm_joint10_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <axis xyz="0 0 1"/>
+      <dynamics damping="1.0e-6" friction="0.8"/>
+    </joint>
+
+    <!-- ================= Gazebo 設定 ================= -->
+    <xacro:macro name="gazebo_material" params="link_name">
+      <gazebo reference="${link_name}">
+        <material>Gazebo/White</material>
+      </gazebo>
+    </xacro:macro>
+
+    <xacro:gazebo_material link_name="link1"/>
+    <xacro:gazebo_material link_name="link2"/>
+    <xacro:gazebo_material link_name="link3"/>
+    <xacro:gazebo_material link_name="link4"/>
+    <xacro:gazebo_material link_name="link5"/>
+    <xacro:gazebo_material link_name="link6"/>
+    <xacro:gazebo_material link_name="link7"/>
+    <xacro:gazebo_material link_name="link8"/>
+    <xacro:gazebo_material link_name="link9"/>
+    <!-- <xacro:gazebo_material link_name="link10"/> -->
+
+  </xacro:macro>
+
+</robot>

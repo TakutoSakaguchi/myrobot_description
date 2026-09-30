@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+
+<robot name="myrobot_10dof" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find myrobot_10dof_description)/urdf/myrobot_10dof.xacro"/>
+  <xacro:include filename="$(find myrobot_10dof_description)/urdf/myrobot_10dof_hand.xacro"/>
+
+  <!-- setting color -->
+  <material name="white">
+    <color rgba="0.9 0.9 0.9 1.0"/>
+  </material>
+  <material name="red">
+    <color rgba="0.8984375 0.0 0.0703125 1"/>
+  </material>
+
+  <!-- setting torque / rotation speed -->
+  <xacro:property name="EFFORT_LIMIT" value="4.0"/>
+  <xacro:property name="VELOCITY_LIMIT" value="5.969211435"/>
+
+  <xacro:arg name="use_gazebo_simulation" default="false" />
+  <xacro:arg name="load_trans1" default="false" />
+  <xacro:arg name="use_effort_right_arm" default="false" />
+
+  <xacro:property name="right_arm_interface" value="position"/>
+  <xacro:if value="$(arg use_effort_right_arm)">
+    <xacro:property name="right_arm_interface" value="effort"/>
+  </xacro:if>
+
+  <xacro:if value="$(arg use_gazebo_simulation)">
+    <xacro:include filename="$(find myrobot_10dof_description)/urdf/myrobot_10dof_gazebo.xacro"/>
+
+    <xacro:if value="$(arg load_trans1)">
+      <!-- <xacro:default_transmission joint_name="arm_joint01" interface="${right_arm_interface}"/> -->
+      <xacro:default_transmission joint_name="arm_joint02" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="arm_joint03" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="arm_joint04" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="arm_joint05" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="arm_joint06" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="arm_joint07" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="arm_joint08" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="arm_joint09" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="arm_joint10" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="hand_joint" interface="position"/>
+    </xacro:if>
+  </xacro:if>
+
+  <!-- Used for fixing robot 'base_link'  to Gazebo 'world' -->
+  <link name="world"/>
+
+	<!-- connect base and world via three axes expressing mobile platform -->
+	<link name="base_link"/>
+	
+	<joint name="base_link_to_world_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 1.5" rpy="0 0 0"/>
+  </joint>
+
+  <xacro:myrobot_10dof
+    arm_joint1_lower_limit="${radians(-90)}"
+    arm_joint1_upper_limit="${radians(90)}"
+    arm_joint2_lower_limit="${radians(-90)}"
+    arm_joint2_upper_limit="${radians(90)}"
+    arm_joint3_lower_limit="${radians(-90)}"
+    arm_joint3_upper_limit="${radians(90)}"
+    arm_joint4_lower_limit="${radians(-90)}"
+    arm_joint4_upper_limit="${radians(90)}"
+    arm_joint5_lower_limit="${radians(-90)}"
+    arm_joint5_upper_limit="${radians(90)}"
+    arm_joint6_lower_limit="${radians(-90)}"
+    arm_joint6_upper_limit="${radians(90)}"
+    arm_joint7_lower_limit="${radians(-90)}"
+    arm_joint7_upper_limit="${radians(90)}"
+    arm_joint8_lower_limit="${radians(-90)}"
+    arm_joint8_upper_limit="${radians(90)}"
+    arm_joint9_lower_limit="${radians(-90)}"
+    arm_joint9_upper_limit="${radians(90)}"
+    arm_joint10_lower_limit="${radians(-90)}"
+    arm_joint10_upper_limit="${radians(90)}"
+    arm_joints_effort_limit="${EFFORT_LIMIT}"
+    arm_joints_velocity_limit="${VELOCITY_LIMIT}"
+    arm_color="white">
+  </xacro:myrobot_10dof>
+
+  <xacro:myrobot_10dof_hand
+    hand_joints_lower_limit="${radians(-90)}"
+    hand_joints_upper_limit="${radians(0)}"
+    hand_joints_effort_limit="${EFFORT_LIMIT}"
+    hand_joints_velocity_limit="${VELOCITY_LIMIT}"
+    hand_color="red">
+  </xacro:myrobot_10dof_hand>
+</robot>

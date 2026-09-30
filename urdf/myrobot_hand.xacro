@@ -2,7 +2,7 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="myrobot_10dof_hand" 
+  <xacro:macro name="myrobot_hand" 
     params="hand_joints_lower_limit
             hand_joints_upper_limit
             hand_joints_effort_limit
@@ -14,14 +14,14 @@
       <visual>
         <origin rpy="3.14159 0 1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/visual/com10C.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/com10C.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${hand_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/collision/com10C.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/com10C.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -48,14 +48,14 @@
       <visual>
         <origin rpy="3.14159 0 -1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/visual/com10A.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/com10A.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${hand_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 -1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/collision/com10A.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/com10A.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -83,14 +83,14 @@
       <visual>
         <origin rpy="3.14159 0 -1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/visual/com10B.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/com10B.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${hand_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 -1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/collision/com10B.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/com10B.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>

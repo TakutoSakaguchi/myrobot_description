@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 
-<robot name="myrobot_10dof" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find myrobot_10dof_description)/urdf/myrobot_10dof.xacro"/>
-  <xacro:include filename="$(find myrobot_10dof_description)/urdf/myrobot_10dof_hand.xacro"/>
+<robot name="myrobot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find myrobot_description)/urdf/myrobot.xacro"/>
+  <xacro:include filename="$(find myrobot_description)/urdf/myrobot_hand.xacro"/>
 
   <!-- setting color -->
   <material name="white">
@@ -26,7 +26,7 @@
   </xacro:if>
 
   <xacro:if value="$(arg use_gazebo_simulation)">
-    <xacro:include filename="$(find myrobot_10dof_description)/urdf/myrobot_10dof_gazebo.xacro"/>
+    <xacro:include filename="$(find myrobot_description)/urdf/myrobot_gazebo.xacro"/>
 
     <xacro:if value="$(arg load_trans1)">
       <!-- <xacro:default_transmission joint_name="arm_joint01" interface="${right_arm_interface}"/> -->
@@ -55,7 +55,7 @@
     <origin xyz="0 0 1.5" rpy="0 0 0"/>
   </joint>
 
-  <xacro:myrobot_10dof
+  <xacro:myrobot
     arm_joint1_lower_limit="${radians(-90)}"
     arm_joint1_upper_limit="${radians(90)}"
     arm_joint2_lower_limit="${radians(-90)}"
@@ -79,13 +79,13 @@
     arm_joints_effort_limit="${EFFORT_LIMIT}"
     arm_joints_velocity_limit="${VELOCITY_LIMIT}"
     arm_color="white">
-  </xacro:myrobot_10dof>
+  </xacro:myrobot>
 
-  <xacro:myrobot_10dof_hand
+  <xacro:myrobot_hand
     hand_joints_lower_limit="${radians(-90)}"
     hand_joints_upper_limit="${radians(0)}"
     hand_joints_effort_limit="${EFFORT_LIMIT}"
     hand_joints_velocity_limit="${VELOCITY_LIMIT}"
     hand_color="red">
-  </xacro:myrobot_10dof_hand>
+  </xacro:myrobot_hand>
 </robot>

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 
 <robot name="sciurus17" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find myrobot_10dof_description)/urdf/sciurus17_right_arm_only.xacro"/>
-  <xacro:include filename="$(find myrobot_10dof_description)/urdf/sciurus17_right_hand.xacro"/>
+  <xacro:include filename="$(find myrobot_description)/urdf/sciurus17_right_arm_only.xacro"/>
+  <xacro:include filename="$(find myrobot_description)/urdf/sciurus17_right_hand.xacro"/>
 
   <!-- setting color -->
   <material name="white">
@@ -26,7 +26,7 @@
   </xacro:if>
 
   <xacro:if value="$(arg use_gazebo_simulation)">
-    <xacro:include filename="$(find myrobot_10dof_description)/urdf/sciurus17_gazebo.xacro"/>
+    <xacro:include filename="$(find myrobot_description)/urdf/sciurus17_gazebo.xacro"/>
 
     <xacro:if value="$(arg load_trans1)">
       <xacro:default_transmission joint_name="r_arm_joint1" interface="${right_arm_interface}"/>

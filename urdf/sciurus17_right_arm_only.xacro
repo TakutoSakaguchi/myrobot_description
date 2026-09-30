@@ -39,14 +39,14 @@
       <visual>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/visual/R_Link1.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/visual/R_Link1.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/collision/R_Link1.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/collision/R_Link1.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -73,14 +73,14 @@
       <visual>
         <origin rpy="0 1.5708 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/visual/R_Link2.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/visual/R_Link2.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="0 1.5708 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/collision/R_Link2.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/collision/R_Link2.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -107,14 +107,14 @@
       <visual>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/visual/L_Link3.stl" scale="1.0 -1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/visual/L_Link3.stl" scale="1.0 -1.0 1.0"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/collision/L_Link3.stl" scale="1.0 -1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/collision/L_Link3.stl" scale="1.0 -1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -141,14 +141,14 @@
       <visual>
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/visual/R_Link4.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/visual/R_Link4.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/collision/R_Link4.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/collision/R_Link4.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -175,14 +175,14 @@
       <visual>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/visual/R_Link5.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/visual/R_Link5.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <visual>
         <origin xyz="0.032 -0.074 0.0345" rpy="0 0 -2.0944"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/visual/Logo_Rabbit.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/visual/Logo_Rabbit.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="red_color">
           <color rgba="0.8984375 0.0 0.0703125 1"/>
@@ -191,7 +191,7 @@
       <visual>
         <origin xyz="0.013 -0.107 0.0345" rpy="0 0 -2.0944"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/visual/Logo_Corp.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/visual/Logo_Corp.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="black_color">
           <color rgba="0.2 0.2 0.2 1"/>
@@ -200,7 +200,7 @@
       <collision>
         <origin rpy="1.5708 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/collision/R_Link5.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/collision/R_Link5.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>
@@ -249,14 +249,14 @@
       <visual>
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/visual/R_Link6.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/visual/R_Link6.stl" scale="1.0 1.0 1.0"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_10dof_description/meshes/collision/R_Link6.stl" scale="1.0 1.0 1.0"/>
+          <mesh filename="package://myrobot_description/meshes/collision/R_Link6.stl" scale="1.0 1.0 1.0"/>
         </geometry>
       </collision>
       <inertial>

@@ -1,0 +1,40 @@
+<launch>
+    <arg name="gui" default="true"/>
+    <arg name="paused" default="false"/>
+    <arg name="joint_gui" default="true"/>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>
+
+    <param name="robot_description" 
+            command="$(find xacro)/xacro 
+                    '$(find myrobot_description)/urdf/myrobot.urdf.xacro' 
+                    use_gazebo_simulation:=true 
+                    load_trans1:=true"/>
+                
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model my_robot -param robot_description"/>
+
+    <!-- The Gazebo control plugin uses /my_robot as its ROS namespace. -->
+    <rosparam command="load" file="$(find myrobot_gazebo)/config/controllers.yaml" ns="/my_robot"/>
+    <node name="controller_spawner"
+            pkg="controller_manager"
+            type="spawner" 
+            respawn="false" 
+            output="screen"
+            ns="/my_robot" 
+            args="joint_state_controller arm_joint_trajectory_controller"/>
+
+    <!-- Per-joint sliders for the active trajectory controller. -->
+    <node if="$(arg joint_gui)" 
+            name="joint_slider_gui" 
+            pkg="rqt_joint_trajectory_controller"
+            type="rqt_joint_trajectory_controller" 
+            output="screen"/>
+
+</launch>

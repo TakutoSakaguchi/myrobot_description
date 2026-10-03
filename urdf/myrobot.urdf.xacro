@@ -12,9 +12,15 @@
     <color rgba="0.8984375 0.0 0.0703125 1"/>
   </material>
 
-  <!-- setting torque / rotation speed -->
-  <xacro:property name="EFFORT_LIMIT" value="4.0"/>
-  <xacro:property name="VELOCITY_LIMIT" value="5.969211435"/>
+  <!-- Actuator limits: effort [N m], velocity [rad/s]. -->
+  <xacro:property name="RMD_X4_P36_36_E_EFFORT_LIMIT" value="10.5"/>
+  <xacro:property name="RMD_X4_P36_36_E_VELOCITY_LIMIT" value="8.69"/>
+
+  <xacro:property name="XH540_V270_EFFORT_LIMIT" value="9.2"/>
+  <xacro:property name="XH540_V270_VELOCITY_LIMIT" value="3.56"/>
+
+  <xacro:property name="XH430_V350_EFFORT_LIMIT" value="3.3"/>
+  <xacro:property name="XH430_V350_VELOCITY_LIMIT" value="3.25"/>
 
   <xacro:arg name="use_gazebo_simulation" default="false" />
   <xacro:arg name="load_trans1" default="false" />
@@ -28,18 +34,28 @@
   <xacro:if value="$(arg use_gazebo_simulation)">
     <xacro:include filename="$(find myrobot_description)/urdf/myrobot_gazebo.xacro"/>
 
+    <!-- URDF mimic tags are not enforced by Gazebo Classic's ros_control plugin. -->
+    <gazebo>
+      <plugin name="hand_mimic_joint_plugin" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
+        <joint>joint_grip</joint>
+        <mimicJoint>joint_grip_mimic</mimicJoint>
+        <multiplier>1.0</multiplier>
+        <offset>0.0</offset>
+      </plugin>
+    </gazebo>
+
     <xacro:if value="$(arg load_trans1)">
-      <!-- <xacro:default_transmission joint_name="arm_joint01" interface="${right_arm_interface}"/> -->
-      <xacro:default_transmission joint_name="arm_joint02" interface="${right_arm_interface}"/>
-      <xacro:default_transmission joint_name="arm_joint03" interface="${right_arm_interface}"/>
-      <xacro:default_transmission joint_name="arm_joint04" interface="${right_arm_interface}"/>
-      <xacro:default_transmission joint_name="arm_joint05" interface="${right_arm_interface}"/>
-      <xacro:default_transmission joint_name="arm_joint06" interface="${right_arm_interface}"/>
-      <xacro:default_transmission joint_name="arm_joint07" interface="${right_arm_interface}"/>
-      <xacro:default_transmission joint_name="arm_joint08" interface="${right_arm_interface}"/>
-      <xacro:default_transmission joint_name="arm_joint09" interface="${right_arm_interface}"/>
-      <xacro:default_transmission joint_name="arm_joint10" interface="${right_arm_interface}"/>
-      <xacro:default_transmission joint_name="hand_joint" interface="position"/>
+      <xacro:default_transmission joint_name="joint01" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="joint02" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="joint03" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="joint04" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="joint05" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="joint06" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="joint07" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="joint08" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="joint09" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="joint10" interface="${right_arm_interface}"/>
+      <xacro:default_transmission joint_name="joint_grip" interface="position"/>
     </xacro:if>
   </xacro:if>
 
@@ -49,43 +65,66 @@
 	<!-- connect base and world via three axes expressing mobile platform -->
 	<link name="base_link"/>
 	
-	<joint name="base_link_to_world_joint" type="fixed">
+	<joint name="joint00" type="fixed">
     <parent link="world"/>
     <child link="base_link"/>
-    <origin xyz="0 0 1.5" rpy="0 0 0"/>
+    <origin xyz="0 0 3.0" rpy="0 0 0"/>
   </joint>
 
   <xacro:myrobot
-    arm_joint1_lower_limit="${radians(-90)}"
-    arm_joint1_upper_limit="${radians(90)}"
-    arm_joint2_lower_limit="${radians(-90)}"
-    arm_joint2_upper_limit="${radians(90)}"
-    arm_joint3_lower_limit="${radians(-90)}"
-    arm_joint3_upper_limit="${radians(90)}"
-    arm_joint4_lower_limit="${radians(-90)}"
-    arm_joint4_upper_limit="${radians(90)}"
-    arm_joint5_lower_limit="${radians(-90)}"
-    arm_joint5_upper_limit="${radians(90)}"
-    arm_joint6_lower_limit="${radians(-90)}"
-    arm_joint6_upper_limit="${radians(90)}"
-    arm_joint7_lower_limit="${radians(-90)}"
-    arm_joint7_upper_limit="${radians(90)}"
-    arm_joint8_lower_limit="${radians(-90)}"
-    arm_joint8_upper_limit="${radians(90)}"
-    arm_joint9_lower_limit="${radians(-90)}"
-    arm_joint9_upper_limit="${radians(90)}"
-    arm_joint10_lower_limit="${radians(-90)}"
-    arm_joint10_upper_limit="${radians(90)}"
-    arm_joints_effort_limit="${EFFORT_LIMIT}"
-    arm_joints_velocity_limit="${VELOCITY_LIMIT}"
+    joint01_lower_limit="${radians(-180)}"
+    joint01_upper_limit="${radians(180)}"
+    joint02_lower_limit="${radians(-90)}"
+    joint02_upper_limit="${radians(90)}"
+    joint03_lower_limit="${radians(-90)}"
+    joint03_upper_limit="${radians(90)}"
+
+    joint04_lower_limit="${radians(-180)}"
+    joint04_upper_limit="${radians(180)}"
+    joint05_lower_limit="${radians(-90)}"
+    joint05_upper_limit="${radians(90)}"
+    joint06_lower_limit="${radians(-90)}"
+    joint06_upper_limit="${radians(90)}"
+    joint07_lower_limit="${radians(-180)}"
+    joint07_upper_limit="${radians(180)}"
+
+    joint08_lower_limit="${radians(-90)}"
+    joint08_upper_limit="${radians(90)}"
+    joint09_lower_limit="${radians(-90)}"
+    joint09_upper_limit="${radians(90)}"
+    joint10_lower_limit="${radians(-180)}"
+    joint10_upper_limit="${radians(180)}"
+
+    joint01_effort_limit=   "${RMD_X4_P36_36_E_EFFORT_LIMIT}"
+    joint01_velocity_limit= "${RMD_X4_P36_36_E_VELOCITY_LIMIT}"
+    joint02_effort_limit=   "${RMD_X4_P36_36_E_EFFORT_LIMIT}"
+    joint02_velocity_limit= "${RMD_X4_P36_36_E_VELOCITY_LIMIT}"
+    joint03_effort_limit=   "${RMD_X4_P36_36_E_EFFORT_LIMIT}"
+    joint03_velocity_limit= "${RMD_X4_P36_36_E_VELOCITY_LIMIT}"
+    
+    joint04_effort_limit=   "${XH540_V270_EFFORT_LIMIT}"
+    joint04_velocity_limit= "${XH540_V270_VELOCITY_LIMIT}"
+    joint05_effort_limit=   "${XH540_V270_EFFORT_LIMIT}"
+    joint05_velocity_limit= "${XH540_V270_VELOCITY_LIMIT}"
+    joint06_effort_limit=   "${XH540_V270_EFFORT_LIMIT}"
+    joint06_velocity_limit= "${XH540_V270_VELOCITY_LIMIT}"
+    joint07_effort_limit=   "${XH540_V270_EFFORT_LIMIT}"
+    joint07_velocity_limit= "${XH540_V270_VELOCITY_LIMIT}"
+
+    joint08_effort_limit=   "${XH430_V350_EFFORT_LIMIT}"
+    joint08_velocity_limit= "${XH430_V350_VELOCITY_LIMIT}"
+    joint09_effort_limit=   "${XH430_V350_EFFORT_LIMIT}"
+    joint09_velocity_limit= "${XH430_V350_VELOCITY_LIMIT}"
+    joint10_effort_limit=   "${XH430_V350_EFFORT_LIMIT}"
+    joint10_velocity_limit= "${XH430_V350_VELOCITY_LIMIT}"
     arm_color="white">
   </xacro:myrobot>
 
   <xacro:myrobot_hand
     hand_joints_lower_limit="${radians(-90)}"
     hand_joints_upper_limit="${radians(0)}"
-    hand_joints_effort_limit="${EFFORT_LIMIT}"
-    hand_joints_velocity_limit="${VELOCITY_LIMIT}"
+    hand_joints_effort_limit=   "${XH430_V350_EFFORT_LIMIT}"
+    hand_joints_velocity_limit= "${XH430_V350_VELOCITY_LIMIT}"
     hand_color="red">
   </xacro:myrobot_hand>
 </robot>

@@ -1,0 +1,66 @@
+gazebo_ros_control:
+  pid_gains:
+    arm_joint02:
+      p: 100.0
+      i: 0.0
+      d: 1.0
+    arm_joint03:
+      p: 100.0
+      i: 0.0
+      d: 1.0
+    arm_joint04:
+      p: 100.0
+      i: 0.0
+      d: 1.0
+    arm_joint05:
+      p: 100.0
+      i: 0.0
+      d: 1.0
+    arm_joint06:
+      p: 100.0
+      i: 0.0
+      d: 1.0
+    arm_joint07:
+      p: 100.0
+      i: 0.0
+      d: 1.0
+    arm_joint08:
+      p: 100.0
+      i: 0.0
+      d: 1.0
+    arm_joint09:
+      p: 100.0
+      i: 0.0
+      d: 1.0
+    arm_joint10:
+      p: 100.0
+      i: 0.0
+      d: 1.0
+    hand_joint:
+      p: 100.0
+      i: 0.0
+      d: 1.0
+
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+arm_joint_trajectory_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - arm_joint02
+    - arm_joint03
+    - arm_joint04
+    - arm_joint05
+    - arm_joint06
+    - arm_joint07
+    - arm_joint08
+    - arm_joint09
+    - arm_joint10
+    - hand_joint
+  constraints:
+    goal_time: 0.5
+    stopped_velocity_tolerance: 0.05
+  stop_trajectory_duration: 0.5
+  state_publish_rate: 50
+  action_monitor_rate: 20

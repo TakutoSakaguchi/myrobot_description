@@ -65,7 +65,7 @@
 	<!-- connect base and world via three axes expressing mobile platform -->
 	<link name="base_link"/>
 	
-	<joint name="joint00" type="fixed">
+	<joint name="joint_base-to-world" type="fixed">
     <parent link="world"/>
     <child link="base_link"/>
     <origin xyz="0 0 3.0" rpy="0 0 0"/>

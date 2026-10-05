@@ -10,18 +10,18 @@
             hand_color
             ">
 
-    <link name="link10">
+    <link name="hand_link">
       <visual>
         <origin rpy="3.14159 0 1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/visual/com10C.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/HandMount.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${hand_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/collision/com10C.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/HandMount.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -32,7 +32,7 @@
     </link>
 
     <joint name="hand_joint" type="revolute">
-      <parent link="link10" />
+      <parent link="hand_link" />
       <child link="handA_link" />
       <origin xyz="0.0 -0.012 -0.02575" rpy="0 0 0"/>
       <limit 
@@ -48,14 +48,14 @@
       <visual>
         <origin rpy="3.14159 0 -1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/visual/com10A.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/HandFingureA.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${hand_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 -1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/collision/com10A.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/HandFingureA.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -65,8 +65,8 @@
       </inertial>
     </link>
 
-    <joint name="hand_mimic_joint" type="revolute">
-      <parent link="link10" />
+    <joint name="hand_joint_mimic" type="revolute">
+      <parent link="hand_link" />
       <child link="handB_link" />
       <origin xyz="0.0 0.012 -0.02575" rpy="0 0 0"/>
       <limit 
@@ -83,14 +83,14 @@
       <visual>
         <origin rpy="3.14159 0 -1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/visual/com10B.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/HandFingureB.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${hand_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 -1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/collision/com10B.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/HandFingureB.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -100,7 +100,7 @@
       </inertial>
     </link>
 
-    <gazebo reference="link10">
+    <gazebo reference="hand_link">
       <material>Gazebo/Red</material>
     </gazebo>
     <gazebo reference="handA_link">

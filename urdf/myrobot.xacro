@@ -2,50 +2,46 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:macro name="myrobot" 
-    params="arm_joint1_lower_limit
-            arm_joint1_upper_limit
-            arm_joint2_lower_limit
-            arm_joint2_upper_limit
-            arm_joint3_lower_limit
-            arm_joint3_upper_limit
-            arm_joint4_lower_limit
-            arm_joint4_upper_limit
-            arm_joint5_lower_limit
-            arm_joint5_upper_limit
-            arm_joint6_lower_limit
-            arm_joint6_upper_limit
-            arm_joint7_lower_limit
-            arm_joint7_upper_limit
-            arm_joint8_lower_limit
-            arm_joint8_upper_limit
-            arm_joint9_lower_limit
-            arm_joint9_upper_limit
-            arm_joint10_lower_limit
-            arm_joint10_upper_limit
-            arm_joints_effort_limit
-            arm_joints_velocity_limit
+    params="joint01_lower_limit joint01_upper_limit
+            joint02_lower_limit joint02_upper_limit
+            joint03_lower_limit joint03_upper_limit
+            joint04_lower_limit joint04_upper_limit
+            joint05_lower_limit joint05_upper_limit
+            joint06_lower_limit joint06_upper_limit
+            joint07_lower_limit joint07_upper_limit
+            joint08_lower_limit joint08_upper_limit
+            joint09_lower_limit joint09_upper_limit
+            joint01_effort_limit joint01_velocity_limit
+            joint02_effort_limit joint02_velocity_limit
+            joint03_effort_limit joint03_velocity_limit
+            joint04_effort_limit joint04_velocity_limit
+            joint05_effort_limit joint05_velocity_limit
+            joint06_effort_limit joint06_velocity_limit
+            joint07_effort_limit joint07_velocity_limit
+            joint08_effort_limit joint08_velocity_limit
+            joint09_effort_limit joint09_velocity_limit
             arm_color
             ">
 
-    <!-- ================= Link 1 ================= -->
-    <joint name="arm_joint01" type="fixed">
+    <!-- ================= Joint 00 ================= -->
+    <joint name="joint00" type="fixed">
       <parent link="base_link" />
-      <child link="link1" />
+      <child link="link01" />
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </joint>
 
-    <link name="link1">
+    <link name="link01">
       <visual>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/visual/com1.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/com01.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/collision/com1.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/com01.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -55,28 +51,28 @@
       </inertial>
     </link>
 
-    <!-- ================= Link 2 ================= -->
-    <joint name="arm_joint02" type="revolute">
-      <parent link="link1" />
-      <child link="link2" />
+    <!-- ================= Joint01 ================= -->
+    <joint name="joint01" type="revolute">
+      <parent link="link01" />
+      <child link="link02" />
       <origin xyz="0 0 -0.0715" rpy="0 0 0"/>
-      <limit lower="${arm_joint2_lower_limit}" upper="${arm_joint2_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <limit lower="${joint01_lower_limit}" upper="${joint01_upper_limit}" effort="${joint01_effort_limit}" velocity="${joint01_velocity_limit}"/>
       <axis xyz="0 0 1"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
     </joint>
 
-    <link name="link2">
+    <link name="link02">
       <visual>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/visual/com2.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/com02.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/collision/com2.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/com02.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -86,28 +82,28 @@
       </inertial>
     </link>
 
-    <!-- ================= Link 3 ================= -->
-    <joint name="arm_joint03" type="revolute">
-      <parent link="link2" />
-      <child link="link3" />
-      <origin xyz="0 0 -0.08" rpy="0 0 0"/>
-      <limit lower="${arm_joint3_lower_limit}" upper="${arm_joint3_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+    <!-- ================= Joint02 ================= -->
+    <joint name="joint02" type="revolute">
+      <parent link="link02" />
+      <child link="link03" />
+      <origin xyz="0 0 -0.0715" rpy="0 0 0"/>
+      <limit lower="${joint02_lower_limit}" upper="${joint02_upper_limit}" effort="${joint02_effort_limit}" velocity="${joint02_velocity_limit}"/>
       <axis xyz="0 1 0"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
     </joint>
 
-    <link name="link3">
+    <link name="link03">
       <visual>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/visual/com3.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/com03.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/collision/com3.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/com03.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -117,28 +113,28 @@
       </inertial>
     </link>
 
-    <!-- ================= Link 4 ================= -->
-    <joint name="arm_joint04" type="revolute">
-      <parent link="link3" />
-      <child link="link4" />
-      <origin xyz="0 0 -0.2265" rpy="0 0 0"/>
-      <limit lower="${arm_joint4_lower_limit}" upper="${arm_joint4_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+    <!-- ================= joint03 ================= -->
+    <joint name="joint03" type="revolute">
+      <parent link="link03"/>
+      <child link="link04"/>
+      <origin xyz="0 0 -0.0715" rpy="0 0 0"/>
+      <limit lower="${joint03_lower_limit}" upper="${joint03_upper_limit}" effort="${joint03_effort_limit}" velocity="${joint03_velocity_limit}"/>
       <axis xyz="0 0 1"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
     </joint>
 
-    <link name="link4">
+    <link name="link04">
       <visual>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/visual/com4.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/com04.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/collision/com4.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/com04.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -148,28 +144,28 @@
       </inertial>
     </link>
 
-    <!-- ================= Link 5 ================= -->
-    <joint name="arm_joint05" type="revolute">
-      <parent link="link4" />
-      <child link="link5" />
+    <!-- ================= joint04 ================= -->
+    <joint name="joint04" type="revolute">
+      <parent link="link04" />
+      <child link="link05" />
       <origin xyz="0 0 -0.150" rpy="0 0 0"/>
-      <limit lower="${arm_joint5_lower_limit}" upper="${arm_joint5_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <limit lower="${joint04_lower_limit}" upper="${joint04_upper_limit}" effort="${joint04_effort_limit}" velocity="${joint04_velocity_limit}"/>
       <axis xyz="0 1 0"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
     </joint>
 
-    <link name="link5">
+    <link name="link05">
       <visual>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/visual/com5.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/com05.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/collision/com5.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/com05.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -179,28 +175,28 @@
       </inertial>
     </link>
 
-    <!-- ================= Link 6 ================= -->
-    <joint name="arm_joint06" type="revolute">
-      <parent link="link5" />
-      <child link="link6" />
+    <!-- ================= Joint05 ================= -->
+    <joint name="joint05" type="revolute">
+      <parent link="link05" />
+      <child link="link06" />
       <origin xyz="0 0 -0.2005" rpy="0 0 0"/>
-      <limit lower="${arm_joint6_lower_limit}" upper="${arm_joint6_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <limit lower="${joint05_lower_limit}" upper="${joint05_upper_limit}" effort="${joint05_effort_limit}" velocity="${joint05_velocity_limit}"/>
       <axis xyz="0 0 1"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
     </joint>
 
-    <link name="link6">
+    <link name="link06">
       <visual>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/visual/com6.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/com06.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/collision/com6.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/com06.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -210,28 +206,28 @@
       </inertial>
     </link>
 
-    <!-- ================= Link 7 ================= -->
-    <joint name="arm_joint07" type="revolute">
-      <parent link="link6" />
-      <child link="link7" />
+    <!-- ================= Joint06 ================= -->
+    <joint name="joint06" type="revolute">
+      <parent link="link06" />
+      <child link="link07" />
       <origin xyz="0 0 -0.09025" rpy="0 0 0"/>
-      <limit lower="${arm_joint7_lower_limit}" upper="${arm_joint7_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <limit lower="${joint06_lower_limit}" upper="${joint06_upper_limit}" effort="${joint06_effort_limit}" velocity="${joint06_velocity_limit}"/>
       <axis xyz="0 1 0"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
     </joint>
 
-    <link name="link7">
+    <link name="link07">
       <visual>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/visual/com7.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/com07.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/collision/com7.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/com07.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -241,28 +237,28 @@
       </inertial>
     </link>
 
-    <!-- ================= Link 8 ================= -->
-    <joint name="arm_joint08" type="revolute">
-      <parent link="link7" />
-      <child link="link8" />
+    <!-- ================= Joint07 ================= -->
+    <joint name="joint07" type="revolute">
+      <parent link="link07" />
+      <child link="link08" />
       <origin xyz="0 0 -0.1355" rpy="0 0 0"/>
-      <limit lower="${arm_joint8_lower_limit}" upper="${arm_joint8_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <limit lower="${joint07_lower_limit}" upper="${joint07_upper_limit}" effort="${joint07_effort_limit}" velocity="${joint07_velocity_limit}"/>
       <axis xyz="0 0 1"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
     </joint>
 
-    <link name="link8">
+    <link name="link08">
       <visual>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/visual/com8.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/com08.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/collision/com8.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/com08.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -272,28 +268,28 @@
       </inertial>
     </link>
 
-    <!-- ================= Link 9 ================= -->
-    <joint name="arm_joint09" type="revolute">
-      <parent link="link8" />
-      <child link="link9" />
+    <!-- ================= Joint08 ================= -->
+    <joint name="joint08" type="revolute">
+      <parent link="link08" />
+      <child link="link09" />
       <origin xyz="0 0 -0.09025" rpy="0 0 0"/>
-      <limit lower="${arm_joint9_lower_limit}" upper="${arm_joint9_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <limit lower="${joint08_lower_limit}" upper="${joint08_upper_limit}" effort="${joint08_effort_limit}" velocity="${joint08_velocity_limit}"/>
       <axis xyz="0 1 0"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
     </joint>
 
-    <link name="link9">
+    <link name="link09">
       <visual>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/visual/com9.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/visual/com09.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="${arm_color}"/>
       </visual>
       <collision>
         <origin rpy="3.14159 0 0" xyz="0 0 0"/>
         <geometry>
-          <mesh filename="package://myrobot_description/meshes/collision/com9.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://myrobot_description/meshes/collision/com09.stl" scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
       <inertial>
@@ -303,12 +299,12 @@
       </inertial>
     </link>
 
-    <!-- ================= Link 10 ================= -->
-    <joint name="arm_joint10" type="revolute">
-      <parent link="link9" />
-      <child link="link10" />
+    <!-- ================= Joint09 ================= -->
+    <joint name="joint09" type="revolute">
+      <parent link="link09" />
+      <child link="hand_link" />
       <origin xyz="0 0 -0.14050" rpy="0 0 0"/>
-      <limit lower="${arm_joint10_lower_limit}" upper="${arm_joint10_upper_limit}" effort="${arm_joints_effort_limit}" velocity="${arm_joints_velocity_limit}"/>
+      <limit lower="${joint09_lower_limit}" upper="${joint09_upper_limit}" effort="${joint09_effort_limit}" velocity="${joint09_velocity_limit}"/>
       <axis xyz="0 0 1"/>
       <dynamics damping="1.0e-6" friction="0.8"/>
     </joint>
@@ -320,16 +316,15 @@
       </gazebo>
     </xacro:macro>
 
-    <xacro:gazebo_material link_name="link1"/>
-    <xacro:gazebo_material link_name="link2"/>
-    <xacro:gazebo_material link_name="link3"/>
-    <xacro:gazebo_material link_name="link4"/>
-    <xacro:gazebo_material link_name="link5"/>
-    <xacro:gazebo_material link_name="link6"/>
-    <xacro:gazebo_material link_name="link7"/>
-    <xacro:gazebo_material link_name="link8"/>
-    <xacro:gazebo_material link_name="link9"/>
-    <!-- <xacro:gazebo_material link_name="link10"/> -->
+    <xacro:gazebo_material link_name="link01"/>
+    <xacro:gazebo_material link_name="link02"/>
+    <xacro:gazebo_material link_name="link03"/>
+    <xacro:gazebo_material link_name="link04"/>
+    <xacro:gazebo_material link_name="link05"/>
+    <xacro:gazebo_material link_name="link06"/>
+    <xacro:gazebo_material link_name="link07"/>
+    <xacro:gazebo_material link_name="link08"/>
+    <xacro:gazebo_material link_name="link09"/>
 
   </xacro:macro>
 

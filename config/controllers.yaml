@@ -1,38 +1,38 @@
 gazebo_ros_control:
   pid_gains:
-    arm_joint02:
+    joint02:
       p: 100.0
       i: 0.0
       d: 1.0
-    arm_joint03:
+    joint03:
       p: 100.0
       i: 0.0
       d: 1.0
-    arm_joint04:
+    joint04:
       p: 100.0
       i: 0.0
       d: 1.0
-    arm_joint05:
+    joint05:
       p: 100.0
       i: 0.0
       d: 1.0
-    arm_joint06:
+    joint06:
       p: 100.0
       i: 0.0
       d: 1.0
-    arm_joint07:
+    joint07:
       p: 100.0
       i: 0.0
       d: 1.0
-    arm_joint08:
+    joint08:
       p: 100.0
       i: 0.0
       d: 1.0
-    arm_joint09:
+    joint09:
       p: 100.0
       i: 0.0
       d: 1.0
-    arm_joint10:
+    joint10:
       p: 100.0
       i: 0.0
       d: 1.0
@@ -48,15 +48,15 @@ joint_state_controller:
 arm_joint_trajectory_controller:
   type: position_controllers/JointTrajectoryController
   joints:
-    - arm_joint02
-    - arm_joint03
-    - arm_joint04
-    - arm_joint05
-    - arm_joint06
-    - arm_joint07
-    - arm_joint08
-    - arm_joint09
-    - arm_joint10
+    - joint02
+    - joint03
+    - joint04
+    - joint05
+    - joint06
+    - joint07
+    - joint08
+    - joint09
+    - joint10
     - hand_joint
   constraints:
     goal_time: 0.5

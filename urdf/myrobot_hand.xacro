@@ -10,7 +10,7 @@
             hand_color
             ">
 
-    <link name="hand_link">
+    <link name="HandMount_link">
       <visual>
         <origin rpy="3.14159 0 1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
@@ -25,15 +25,22 @@
         </geometry>
       </collision>
       <inertial>
-        <origin rpy="1.5708 0 0" xyz="-0.118e-03 -20.65e-03 1.006e-03"/>
-        <inertia ixx="32600.928e-09" ixy="-69.84e-09" ixz="-254.224e-09" iyy="41969.484e-09" iyz="-409.16e-09" izz="43040.018e-09"/>
-        <mass value="121.0e-03"/>
+        <origin xyz="0.000264 -0.000049 0.023304" rpy="0 0 0"/>
+        <mass value="0.205541"/>
+        <inertia
+          ixx="0.000095997183"
+          ixy="-1.231e-7"
+          ixz="1.41185e-7"
+          iyy="0.0001288"
+          iyz="2.4556e-8"
+          izz="0.0001199"/>
       </inertial>
     </link>
 
+    <!-- ================= Joint hand mount to HandFingerA_link ================= -->    
     <joint name="hand_joint" type="revolute">
-      <parent link="hand_link" />
-      <child link="handA_link" />
+      <parent link="HandMount_link" />
+      <child link="HandFingerA_link" />
       <origin xyz="0.0 -0.012 -0.02575" rpy="0 0 0"/>
       <limit 
         lower="${hand_joints_lower_limit}" 
@@ -44,7 +51,7 @@
       <dynamics damping="1.0e-6" friction="0.8"/>
     </joint>
 
-    <link name="handA_link">
+    <link name="HandFingerA_link">
       <visual>
         <origin rpy="3.14159 0 -1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
@@ -59,15 +66,22 @@
         </geometry>
       </collision>
       <inertial>
-        <origin rpy="0 0 0" xyz="2.649e-03 -26.849e-03 3.757e-03"/>
-        <inertia ixx="10192.75e-09" ixy="-197.895e-09" ixz="98.609e-09" iyy="5023.728e-09" iyz="-554.407e-09" izz="6322.202e-09"/>
-        <mass value="15.8e-03"/>
+        <origin xyz="-0.001325 -3.967e-10 0.022033" rpy="0 0 0"/>
+        <mass value="0.020568"/>
+        <inertia
+          ixx="0.000010584193"
+          ixy="-1.041e-14"
+          ixz="5.62926e-7"
+          iyy="0.000004874099"
+          iyz="0.0"
+          izz="0.000006957021"/>
       </inertial>
     </link>
 
-    <joint name="hand_joint_mimic" type="revolute">
-      <parent link="hand_link" />
-      <child link="handB_link" />
+    <!-- ================= Joint hand finger B to hand fingerA ================= -->
+    <joint name="hand_mimic_joint" type="revolute">
+      <parent link="HandMount_link" />
+      <child link="HandFingerB_link" />
       <origin xyz="0.0 0.012 -0.02575" rpy="0 0 0"/>
       <limit 
         lower="${hand_joints_lower_limit}" 
@@ -79,7 +93,7 @@
       <dynamics damping="1.0e-6" friction="0.8"/>
     </joint>
 
-    <link name="handB_link">
+    <link name="HandFingerB_link">
       <visual>
         <origin rpy="3.14159 0 -1.5708" xyz="0.0 0.0 0.0"/>
         <geometry>
@@ -94,19 +108,25 @@
         </geometry>
       </collision>
       <inertial>
-        <origin rpy="0 0 0" xyz="-2.707e-03 -30.901e-03 2.845e-03"/>
-        <inertia ixx="7483.7e-09" ixy="361.283e-09" ixz="-63.385e-09" iyy="4088.581e-09" iyz="-228.226e-09" izz="4372.991e-09"/>
-        <mass value="13.9e-03"/>
+        <origin xyz="0.001385 -0.000244 0.021686" rpy="0 0 0"/>
+        <mass value="0.02096"/>
+        <inertia
+          ixx="0.000010837944"
+          ixy="-7.082e-9"
+          ixz="-5.33588e-7"
+          iyy="0.000005007456"
+          iyz="-1.10875e-7"
+          izz="0.000007078359"/>
       </inertial>
     </link>
 
-    <gazebo reference="hand_link">
+    <gazebo reference="HandMount_link">
       <material>Gazebo/Red</material>
     </gazebo>
-    <gazebo reference="handA_link">
+    <gazebo reference="HandFingerA_link">
       <material>Gazebo/Red</material>
     </gazebo>
-    <gazebo reference="handB_link">
+    <gazebo reference="HandFingerB_link">
       <material>Gazebo/Red</material>
     </gazebo>
 

@@ -51,7 +51,7 @@
       <xacro:default_transmission joint_name="joint07" interface="${right_arm_interface}"/>
       <xacro:default_transmission joint_name="joint08" interface="${right_arm_interface}"/>
       <xacro:default_transmission joint_name="joint09" interface="${right_arm_interface}"/>
-      <xacro:default_transmission joint_name="joint_grip" interface="position"/>
+      <xacro:default_transmission joint_name="hand_joint" interface="position"/>
     </xacro:if>
   </xacro:if>
 
@@ -61,10 +61,10 @@
 	<!-- connect base and world via three axes expressing mobile platform -->
 	<link name="base_link"/>
 	
-	<joint name="base_fixed_joint" type="fixed">
+	<joint name="joint_base-to-world" type="fixed">
     <parent link="world"/>
     <child link="base_link"/>
-    <origin xyz="0 0 1.5" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
 
   <xacro:myrobot
@@ -76,6 +76,7 @@
     joint03_upper_limit="${radians(90)}"
     joint04_lower_limit="${radians(-90)}"
     joint04_upper_limit="${radians(90)}"
+    
     joint05_lower_limit="${radians(-90)}"
     joint05_upper_limit="${radians(90)}"
     joint06_lower_limit="${radians(-90)}"
@@ -87,14 +88,15 @@
     joint09_lower_limit="${radians(-90)}"
     joint09_upper_limit="${radians(90)}"
 
-    joint01_effort_limit  ="${XH430_V350_EFFORT_LIMIT}"
-    joint01_velocity_limit="${XH430_V350_VELOCITY_LIMIT}"
-    joint02_effort_limit  ="${XH430_V350_EFFORT_LIMIT}"
-    joint02_velocity_limit="${XH430_V350_VELOCITY_LIMIT}"
-    joint03_effort_limit  ="${XH430_V350_EFFORT_LIMIT}"
-    joint03_velocity_limit="${XH430_V350_VELOCITY_LIMIT}"
-    joint04_effort_limit  ="${XH430_V350_EFFORT_LIMIT}"
-    joint04_velocity_limit="${XH430_V350_VELOCITY_LIMIT}"
+    joint01_effort_limit  ="${RMD_X4_P36_36_E_EFFORT_LIMIT}"
+    joint01_velocity_limit="${RMD_X4_P36_36_E_VELOCITY_LIMIT}"
+    joint02_effort_limit  ="${RMD_X4_P36_36_E_EFFORT_LIMIT}"
+    joint02_velocity_limit="${RMD_X4_P36_36_E_VELOCITY_LIMIT}"
+    joint03_effort_limit  ="${RMD_X4_P36_36_E_EFFORT_LIMIT}"
+    joint03_velocity_limit="${RMD_X4_P36_36_E_VELOCITY_LIMIT}"
+    joint04_effort_limit  ="${RMD_X4_P36_36_E_EFFORT_LIMIT}"
+    joint04_velocity_limit="${RMD_X4_P36_36_E_VELOCITY_LIMIT}"
+
     joint05_effort_limit  ="${XH430_V350_EFFORT_LIMIT}"
     joint05_velocity_limit="${XH430_V350_VELOCITY_LIMIT}"
     joint06_effort_limit  ="${XH430_V350_EFFORT_LIMIT}"
@@ -111,7 +113,7 @@
   <xacro:myrobot_hand
     hand_joints_lower_limit="${radians(-90)}"
     hand_joints_upper_limit="${radians(0)}"
-    hand_joints_effort_limit ="${XH430_V350_EFFORT_LIMIT}"
+    hand_joints_effort_limit  ="${XH430_V350_EFFORT_LIMIT}"
     hand_joints_velocity_limit="${XH430_V350_VELOCITY_LIMIT}"
     hand_color="red">
   </xacro:myrobot_hand>
